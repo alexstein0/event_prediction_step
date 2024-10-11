@@ -1,0 +1,33 @@
+name: ???
+
+save_name:
+
+process_only: False
+
+data_processor: ???
+
+index_columns: []
+
+raw_selected_columns: []
+
+categorical_columns: []
+
+numeric_columns: []
+
+binary_columns: []
+
+label_columns: []
+
+raw_type: csv
+
+raw_index_columns: ${data.index_columns}
+
+consolidate_columns:
+
+label_position: -1
+
+label_moved_to_position: -1
+
+huggingface:
+
+delimiter: ","

@@ -1,0 +1,11 @@
+# @package _global_
+defaults:
+  - ibm_default
+  - _self_
+
+#tokenizer:
+tokenizer_name: ibm_fraud_transaction_small_fixed_simple
+tokenized_data_name: ibm_fraud_transaction_small_fixed
+data:
+  size: "_small"
+  name: ibm_fraud_transaction_small_fixed

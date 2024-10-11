@@ -1,0 +1,49 @@
+# @package _global_
+
+# The other config files this relies on, specified in the format "<folder>: <file>[.yaml]"
+defaults:
+  - data: ???
+  - impl: torch-default
+  - tokenizer: simple
+  - model: gpt2
+#  - model: encoder
+  - wandb: none
+  - _self_
+  - experiment:
+  - override hydra/job_logging: custom
+
+base_dir: outputs
+data_dir: data_raw
+tokenizer_dir: tokenizer
+
+tokenizer_name: ${data.name}_${tokenizer.name}
+tokenized_data_name:
+processed_data_dir: data
+
+consolidate: False
+
+save_csv: False
+preprocess_only: False
+
+model_dir: models
+model_save_name:
+checkpoint_save_name: latest
+
+experiment_folder_name:
+
+
+
+hydra:
+  sweep:
+    dir: ${base_dir}/${name}/seed-${seed}/${now:%Y-%m-%d}/${now:%H-%M-%S-%f}
+  run:
+#    dir: ${base_dir}/${name}/${seed}/${now:%Y-%m-%d}/${now:%H-%M-%S}
+    dir: ${base_dir}/${experiment_folder_name}/${name}/seed-${seed}/${now:%Y-%m-%d}/${now:%H-%M-%S-%f}
+  job:
+    chdir: True
+
+seed: # Optional: Set initial seed
+name: default # A name for this run [will be used for the outputs folder]
+
+# debug implementation by running every loop just once:
+dryrun: False

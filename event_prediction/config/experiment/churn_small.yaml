@@ -1,0 +1,11 @@
+# @package _global_
+defaults:
+  - churn_default
+  - _self_
+
+#tokenizer:
+tokenizer_name: churn_small_simple
+tokenized_data_name: churn_small
+data:
+  size: "_small"
+  name: churn_small

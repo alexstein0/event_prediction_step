@@ -1,0 +1,11 @@
+# @package _global_
+defaults:
+  - override /data: czech_loan
+#  - override /tokenizer: simple
+  - _self_
+
+
+#tokenizer:
+tokenizer_name: czech_loan_simple
+
+tokenized_data_name: czech_loan

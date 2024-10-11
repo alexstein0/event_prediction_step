@@ -1,0 +1,2 @@
+stream_depth: ${data.seq_length} # full sequence as input to model
+batch_size: 8192

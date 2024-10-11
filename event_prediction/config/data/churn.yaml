@@ -1,0 +1,52 @@
+defaults:
+  - default_data
+  - _self_
+
+size: "" #"_small"
+
+name: churn${data.size}
+
+url:
+
+delimiter: ";"
+
+data_processor: churn
+
+raw_selected_columns:
+  - cl_id
+  - MCC
+  - channel_type
+  - currency
+  - TRDATETIME
+  - amount
+  - trx_category
+  - target_flag
+
+index_columns:
+  - User
+
+# TODO:
+# Do feature engineering where we move things from absolute to relative to reduce vocab size
+# so instead of Merchant State, do something like a binary In_Frequent_State
+categorical_columns:
+  - trx_category
+  - MCC
+  - channel_type
+  - currency
+
+numeric_columns:
+  - amount
+#  - PERIOD
+#  - TRDATETIME
+  - total_minutes_from_last
+
+binary_columns: []
+
+label_columns:
+  - target_flag
+
+huggingface:
+  name: "dllllb/rosbank-churn"
+  splits:
+    - train
+#    - test

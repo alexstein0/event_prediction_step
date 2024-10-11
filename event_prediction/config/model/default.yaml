@@ -1,0 +1,46 @@
+defaults:
+  - _self_
+
+project: event-prediction
+name: ???
+
+model_type: ???
+#has_encoder: false
+#has_decoder: false
+#has_small_decoder: false
+
+state_dict_path:
+load_checkpoint_path:
+
+# Model args
+context_length: 140  # must be a multiple of tabular columns if each column is a token
+
+# Train args
+batch_size: 32  #(rows)
+seq_length: 10  #(rows)
+grad_accum_batches: 8
+train_test_split: .02
+training_objective: ??? # accepts either 'causal' or 'masked'
+loss_fn: ??? # accepts CrossEntropyLoss and RMSE
+optim: AdamW # accepts AdamW
+lr: 1e-5
+lr_scheduler: cosine
+warmup_steps: 1000
+epochs: 2
+val_checks_per_epoch: 1
+gradient_clip_val: 1.0
+ckpt_path: ${hydra:run.dir}/ckpt
+
+randomize_order: False
+fixed_cols: 0 # number of columns fixed if randomizing the order (last one is new row token and second to last could be label)
+percent_mask_all_labels_in_input: 0.0 # potentially mask ALL of the labels
+percent_mask_labels_in_input: 0.0  # potentially mask some of the labels
+random_mask_probability: 0 # todo doesnt work yet
+sequence_label_type: # last, all, none
+epoch_to_switch: -1
+loss_calc_mode: all # last, labels
+metric_calc_mode: labels # last
+track_preds: False
+evaluate_all_positions: False
+
+#stream_depth: ${data.seq_length} # full sequence as input to model

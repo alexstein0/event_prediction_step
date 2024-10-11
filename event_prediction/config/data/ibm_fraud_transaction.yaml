@@ -1,0 +1,55 @@
+defaults:
+  - default_data
+  - _self_
+
+size: "" #"_small"
+
+name: ibm_fraud_transaction${data.size}
+
+url: https://obj.umiacs.umd.edu/eventprediction/transactions${data.size}.tgz
+
+data_processor: ibm_fraud_transaction
+
+train_test_split_year: 2018
+sample_size: 10
+consider_card: False
+
+index_columns:
+  - User
+  - Card
+
+# TODO:
+# Do feature engineering where we move things from absolute to relative to reduce vocab size
+# so instead of Merchant State, do something like a binary In_Frequent_State
+categorical_columns:
+  - Use Chip
+  - Merchant State
+  - Errors?
+  - MCC
+  # - "top_mcc"
+  # - "top_chip"
+  - Merchant Name
+  - Merchant City
+  - "Zip"
+
+numeric_columns:
+  - Amount
+  - Hour
+  - total_minutes_from_last
+  - Year
+  - Month
+  - Day
+#  - Time
+
+static_numeric_columns:
+# - name: "avg_dollar_amt"
+#   parent: "Amount"
+# - name: "std_dollar_amt"
+#   parent: "Amount"
+
+binary_columns:
+#  - "is_online"
+  - "Is Fraud?"
+
+label_columns:
+  - "Is Fraud?"

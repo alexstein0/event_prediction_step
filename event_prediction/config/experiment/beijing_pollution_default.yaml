@@ -1,0 +1,14 @@
+# @package _global_
+defaults:
+  - override /data: beijing_pollution
+#  - override /tokenizer: simple
+  - _self_
+
+
+#tokenizer:
+tokenizer_name: beijing_pollution_simple
+
+tokenized_data_name: beijing_pollution
+
+model:
+  loss_fn: RMSE

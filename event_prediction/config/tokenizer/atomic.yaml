@@ -1,0 +1,6 @@
+name: atomic
+
+normalization_type:
+
+numeric_bucket_type: quantile
+numeric_bucket_amount: 10

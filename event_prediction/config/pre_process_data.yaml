@@ -1,0 +1,32 @@
+# @package _global_
+# Configuration defaults
+# Settings are separated into case, attack analysis
+defaults:
+  - data: ???
+  - impl: torch-default
+  - tokenizer: simple
+  - wandb: none
+  - _self_
+  - override hydra/job_logging: custom
+
+
+base_dir: outputs
+data_dir: data_raw
+processed_data_dir: data
+tokenizer_dir: tokenizer
+save_tar: False
+save_csv: True
+
+hydra:
+  sweep:
+    dir: ${base_dir}/${name}/seed-${seed}/${now:%Y-%m-%d}/${now:%H-%M-%S-%f}
+  run:
+    dir: ${base_dir}/${name}/seed-${seed}/${now:%Y-%m-%d}/${now:%H-%M-%S-%f}
+  job:
+    chdir: True
+
+seed: # Optional: Set initial seed
+name: default # A name for this run [will be used for the outputs folder]
+
+# debug implementation by running every loop just once:
+#dryrun: False

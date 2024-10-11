@@ -1,0 +1,12 @@
+defaults:
+  - default
+  - _self_
+
+name: gpt2
+project: event-prediction
+
+# todo add gpt specific
+model_type: decoder # accepts either 'encoder' or 'decoder'
+
+training_objective: causal # accepts either 'causal' or 'masked'
+loss_fn: CrossEntropyLoss # accepts CrossEntropyLoss

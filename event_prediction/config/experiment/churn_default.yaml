@@ -1,0 +1,11 @@
+# @package _global_
+defaults:
+  - override /data: churn
+#  - override /tokenizer: simple
+  - _self_
+
+
+#tokenizer:
+tokenizer_name: churn_simple
+
+tokenized_data_name: churn

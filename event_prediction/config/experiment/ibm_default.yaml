@@ -1,0 +1,10 @@
+# @package _global_
+defaults:
+  - override /data: ibm_fraud_transaction
+#  - override /tokenizer: simple
+  - _self_
+
+#tokenizer:
+tokenizer_name: ibm_fraud_transaction_simple
+
+tokenized_data_name: ibm_fraud_transaction

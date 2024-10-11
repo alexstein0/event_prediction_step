@@ -1,0 +1,11 @@
+# @package _global_
+defaults:
+  - override /data: amazon_electronics_5core
+#  - override /tokenizer: simple
+  - _self_
+
+
+#tokenizer:
+tokenizer_name: amazon_electronics_5core_simple
+
+tokenized_data_name: amazon_electronics_5core

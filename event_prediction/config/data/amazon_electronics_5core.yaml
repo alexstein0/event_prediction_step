@@ -1,0 +1,67 @@
+defaults:
+  - default_data
+  - _self_
+
+size: "" #"_small"
+
+name: amazon_electronics_5core${data.size}
+
+url: https://jmcauley.ucsd.edu/data/amazon_v2/categoryFilesSmall/Electronics_5.json.gz
+
+data_processor: amazon
+
+raw_selected_columns:
+  - asin
+  - overall
+  - unixReviewTime
+  - verified
+  - reviewerID
+
+index_columns:
+  - User
+
+categorical_columns:
+  - asin
+#  - overall
+
+numeric_columns:
+#  - unixReviewTime
+#  - Hour
+  - total_minutes_from_last
+#  - Year
+#  - Month
+#  - Day
+
+static_numeric_columns:
+
+binary_columns:
+  - verified
+
+label_columns:
+  - overall # > 4 is high
+
+raw_type: json
+
+raw_index_columns:
+  - reviewerID
+
+consolidate_columns:
+  overall:
+    "1.0": 0
+    "2.0": 0
+    "3.0": 0
+    "4.0": 1
+    "5.0": 1
+
+#overall                                                         5.0
+#verified                                                       True
+#reviewTime                                               11 9, 2012
+#reviewerID                                           A2M1CU2IRZG0K9
+#asin                                                     0005089549
+#style                                      {'Format:': ' VHS Tape'}
+#reviewerName                                                  Terri
+#reviewText        So sorry I didn't purchase this years ago when...
+#summary                                                    Amazing!
+#unixReviewTime                                           1352419200
+#vote                                                            NaN
+#image                                                           NaN

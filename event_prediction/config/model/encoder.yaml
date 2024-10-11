@@ -1,0 +1,20 @@
+defaults:
+  - default
+  - _self_
+
+name: encoder
+project: event-prediction
+
+model_type: encoder # accepts either 'encoder' or 'decoder'
+num_encoded_columns: 16
+
+#encoder specific:
+hidden_size: 512
+col_hidden_size: 512
+num_heads: 8
+num_layers: 1
+mask_prob: .15
+
+# Train args
+training_objective: masked # accepts either 'causal' or 'masked'
+loss_fn: CrossEntropyLoss # accepts CrossEntropyLoss

@@ -1,0 +1,10 @@
+# @package _global_
+defaults:
+  - amazon_electronics_default
+  - _self_
+
+#tokenizer:
+tokenizer_name: amazon_electronics_5core_small_simple
+tokenized_data_name: amazon_electronics_5core_small
+data:
+  size: "_small"

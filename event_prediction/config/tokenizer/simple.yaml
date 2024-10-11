@@ -1,0 +1,8 @@
+name: simple
+
+normalization_type:
+
+numeric_bucket_type: binary
+numeric_bucket_amount: 5
+
+vocab_size: 60000

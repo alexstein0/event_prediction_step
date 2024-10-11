@@ -1,0 +1,10 @@
+# @package _global_
+defaults:
+  - beijing_pollution_default
+  - _self_
+
+#tokenizer:
+tokenizer_name: beijing_pollution_5core_small_simple
+tokenized_data_name: beijing_pollution_5core_small
+data:
+  size: "_small"

@@ -1,0 +1,10 @@
+# @package _global_
+defaults:
+  - ibm_default
+  - _self_
+
+impl:
+  pad_to_multiple_of: 0
+
+model:
+  seq_length: 1

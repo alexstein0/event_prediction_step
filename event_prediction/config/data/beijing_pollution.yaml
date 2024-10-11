@@ -1,0 +1,53 @@
+defaults:
+  - default_data
+  - _self_
+
+size: "" #"_small"
+
+name: beijing_pollution${data.size}
+
+url: #https://archive.ics.uci.edu/static/public/501/beijing+multi+site+air+quality+data.zip
+
+data_processor: beijing_pollution
+
+index_columns:
+  - station
+
+# TODO:
+# Do feature engineering where we move things from absolute to relative to reduce vocab size
+# so instead of Merchant State, do something like a binary In_Frequent_State
+categorical_columns:
+  - wd
+
+numeric_columns:
+#  - Amount
+  - hour
+  - total_minutes_from_last
+  - year
+  - month
+  - day
+  - PM2.5
+  - PM10
+  - SO2
+  - NO2
+  - CO
+  - O3
+  - TEMP
+  - PRES
+  - DEWP
+  - RAIN
+  - WSPM
+
+static_numeric_columns:
+# - name: "avg_dollar_amt"
+#   parent: "Amount"
+# - name: "std_dollar_amt"
+#   parent: "Amount"
+
+binary_columns: []
+#  - "is_online"
+#  - "Is Fraud?"
+
+label_columns:
+  - PM2.5
+  - PM10

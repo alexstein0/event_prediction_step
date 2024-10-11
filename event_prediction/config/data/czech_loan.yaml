@@ -1,0 +1,49 @@
+defaults:
+  - default_data
+  - _self_
+
+size: "" #"_small"
+
+name: czech_loan${data.size}
+
+url: "http://sorry.vse.cz/~berka/challenge/pkdd1999/data_berka.zip"
+# need to preprocess file by combining 2
+
+delimiter: ";"
+
+data_processor: czech_loan
+
+raw_selected_columns:
+  - trans_id
+  - account_id
+#  - date
+  - type
+  - operation
+  - amount
+  - balance
+  - k_symbol
+  - bank
+  - event_time
+  - labels
+  - loan_time
+
+index_columns:
+  - User
+
+categorical_columns:
+  - type
+  - operation
+  - k_symbol
+  - bank
+
+numeric_columns:
+#  - event_time
+  - amount
+  - balance
+  - total_minutes_from_last
+
+binary_columns: []
+#  - labels
+
+label_columns:
+  - labels
