@@ -1,4 +1,4 @@
-from .EPmodels_copy import RowEncoder, HierarchicalModel, Decoder
+from .EPmodels import RowEncoder, HierarchicalModel, Decoder
 import torch
 from hydra.utils import get_original_cwd
 import os

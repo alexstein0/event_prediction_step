@@ -1,4 +1,4 @@
 enabled: True
-entity: ???? # change this obviously ;>
+entity: ??? # Your wandb entity
 project: event-prediction
 tags: []
