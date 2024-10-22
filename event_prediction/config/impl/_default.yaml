@@ -22,20 +22,10 @@ save_intermediate_checkpoints: False
 save_every_nth_step: 10_000
 which_checkpoints: important # best, latest, important (best+latest) or all
 
-# early termination, cancel runs that do not meet this loss threshold early.
-early_termination:
-  enabled: False
-  budget: 3 # budget in hours
-  loss_threshold: 6.0 # modify this for non-xent losses
-
 # Basic compute settings
 threads: 32 # maximal number of cpu dataloader workers used per GPU, this value will never exceed num_gpus * num_physical threads
 # Dataloader multiprocessing
 pad_to_multiple_of: 8 # padding in dataloader during downstream
-shuffle_in_dataloader: False # There is still shuffling in the preprocessing pipeline.
-pin_memory: True
-prefetch_factor: 2
-persistent_workers: True # this clashes with pin_memory in pytorch<1.7.1
 
 # Default floating point precision:
 default_precision: float # needs to be a pytorch datatype
@@ -49,7 +39,5 @@ enable_huggingface_offline_mode: False
 local_rank: # This is set automatically by the system_startup
 
 save_final_model: False
-push_to_huggingface_hub: False
-#hf_directoy_name: "test-crammedBERT-c5" # set a clever name here!
 
 add_env_variables:

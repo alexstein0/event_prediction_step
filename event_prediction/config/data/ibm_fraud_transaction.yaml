@@ -6,7 +6,7 @@ size: "" #"_small"
 
 name: ibm_fraud_transaction${data.size}
 
-url: https://obj.umiacs.umd.edu/eventprediction/transactions${data.size}.tgz
+url: ???
 
 data_processor: ibm_fraud_transaction
 

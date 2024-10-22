@@ -1,5 +1,5 @@
 """System utilities."""
-"""this code is courtesy of Jonas"""
+"""this code is originally courtesy of Jonas Geiping"""
 import socket
 import sys
 
@@ -16,7 +16,6 @@ import torch
 import torch._inductor.config
 import pandas as pd
 # import transformers
-
 
 import json
 import random
@@ -242,84 +241,6 @@ def find_pretrained_checkpoint(cfg, downstream_classes=None):
 
     log.info(f"Loading from checkpoint {model_file}...")
     return tokenizer, cfg_arch, model_file
-
-
-# def save_summary(table_name, cfg, stats, local_time, setup, original_cwd=True):
-#     """Save two summary tables. A detailed table of iterations/loss+acc and a summary of the end results."""
-#     # 1) detailed table:
-#     for step in range(len(stats["loss"])):
-#         iteration = dict()
-#         for key in stats:
-#             iteration[key] = stats[key][step] if step < len(stats[key]) else None
-#         save_to_table(".", f"{cfg.name}_convergence_results", dryrun=cfg.dryrun, **iteration)
-#
-#     def _maybe_record(key, step=-1):
-#         try:
-#             return stats[key][step]
-#         except (IndexError, ValueError):
-#             return ""
-#
-#     if "data" in cfg:
-#         processed_dataset_dir = f"{cfg.data.name}_{checksum_config(cfg.data)}"
-#     else:
-#         processed_dataset_dir = None
-#     base_name = cfg.base_dir.rstrip(os.sep).split(os.sep)[-1]
-#     local_folder = os.getcwd().split(base_name)[1].lstrip(os.sep)
-#
-#     # 2) save a reduced summary
-#     if table_name == "pretrain":
-#         summary = dict(
-#             name=cfg.name,
-#             budget=cfg.budget,
-#             dataset="_".join(processed_dataset_dir.split("_")[:-1]),
-#             backend=cfg.impl.name,
-#             arch=" ".join(cfg.arch.architectures),
-#             loss=_maybe_record("loss"),
-#             final_step=_maybe_record("step"),
-#             final_epoch=_maybe_record("epoch"),
-#             step_time=np.mean(stats["train_time"]) if len(stats["train_time"]) > 0 else "",
-#             loss100k=_maybe_record("loss", step=100_000 // cfg.impl.print_loss_every_nth_step),
-#             loss200k=_maybe_record("loss", step=200_000 // cfg.impl.print_loss_every_nth_step),
-#             loss300k=_maybe_record("loss", step=300_000 // cfg.impl.print_loss_every_nth_step),
-#             total_time=str(datetime.timedelta(seconds=local_time)).replace(",", ""),
-#             batch_size=cfg.train.batch_size,
-#             lr=cfg.train.optim.lr,
-#             warmup=cfg.train.warmup_steps,
-#             steps=cfg.train.steps,
-#             # System settings:
-#             seed=cfg.seed,
-#             dataset_hash=processed_dataset_dir.split("_")[-1],
-#             base_dir=cfg.base_dir,
-#             impl_path=cfg.impl.path,
-#             local_folder=local_folder,
-#             # # Dump configs from here on:
-#             **{f"Data_{k}": v for k, v in cfg.data.items()},
-#             **{f"Arch_{k}": v for k, v in cfg.arch.items()},
-#             **{f"Train_{k}": v for k, v in cfg.train.items()},
-#         )
-#     else:
-#         summary = dict(
-#             name=cfg.name,
-#             backend=cfg.impl.name,
-#             checkpoint=cfg.eval.checkpoint,
-#             loss=_maybe_record("loss"),
-#             avg_loss=_maybe_record("avg_loss"),
-#             final_epoch=_maybe_record("epoch"),
-#             step_time=np.mean(stats["train_time"]) if len(stats["train_time"]) > 0 else "",
-#             total_time=str(datetime.timedelta(seconds=local_time)).replace(",", ""),
-#             batch_size=cfg.eval.batch_size,
-#             lr=cfg.eval.optim.lr,
-#             warmup=cfg.eval.warmup_steps,
-#             # System settings:
-#             seed=cfg.seed,
-#             base_dir=cfg.base_dir,
-#             impl_path=cfg.impl.path,
-#             local_folder=local_folder,
-#             # # Dump configs from here on:
-#             **{f"Eval_{k}": v for k, v in cfg.eval.items()},
-#         )
-#     location = os.path.join(cfg.original_cwd, "tables") if original_cwd else "tables"
-#     save_to_table(location, f"{table_name}_reports", dryrun=cfg.dryrun, **summary)
 
 
 def save_to_table(out_dir, table_name, dryrun, **kwargs):
